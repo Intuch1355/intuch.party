@@ -79,8 +79,6 @@ body {
 
 /* === TABLE LAYOUT (scrollable area) === */
 
-/* Remove flex container - let table expand naturally */
-
 #layout {
     width: 760px;
     max-width: 100%;
@@ -105,19 +103,6 @@ body {
     overflow-x: auto;
 }
 
-#sidebar {
-    width: 180px;
-    padding: 8px;
-    vertical-align: top;
-    overflow: hidden;
-}
-
-#main {
-    width: 580px;
-    padding: 8px;
-    vertical-align: top;
-}
-
 /* === FOOTER === */
 
 #footer {
@@ -128,6 +113,7 @@ body {
     font-size: 13px;
     color: #B99AE8;
     text-align: center;
+    margin: 0 auto;
     flex-shrink: 0;
 }
 
@@ -157,12 +143,14 @@ body {
 
 /* === HEADINGS === */
 
+h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
     color: #C99AFF;
+    font-family: 'Pixelify Sans', 'Pixelify Sans Local', 'Courier New', monospace;
 }
 
 /* GIFs inside sidebar h3 - match heading height */

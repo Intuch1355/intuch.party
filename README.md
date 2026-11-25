@@ -2,7 +2,7 @@
 
 > A personal homepage with **Lil Uzi Vert *Eternal Atake / Uzi vs The World 2* energy** meets **90s webcore** aesthetic.
 
-![screenshot](assets/gif/undercon.gif)
+![screenshot](assets/images/undercon.gif)
 
 ## What Is This?
 
@@ -20,20 +20,29 @@ My corner of the internet. **This repo is my learning project — I use it to pr
 
 ```
 intuch.party/
-├── index.html          # Homepage
-├── styles.css          # Purple space theme
+├── index.html          # Homepage (with visitor counter & guestbook)
+├── about.html          # About Me
+├── contact.html        # Contact Info
+├── projects.html       # My Projects
+├── links.html          # My Links
+├── favicon.ico         # Favicon at root level
+├── serve.py            # Local dev server with Flask API proxy
 ├── assets/
-│   ├── png/            # Logos, favicons (lossless)
-│   ├── jpeg/           # Photos, badges
-│   ├── gif/            # Animations, blinkies
-│   └── fonts/          # .woff2 pixel fonts
-├── js/                 # Vanilla JS modules (coming)
-├── about.html          # Coming soon
-├── projects.html       # Coming soon
-├── links.html          # Coming soon
-├── music.html          # Coming soon
-├── LICENSE
-└── README.md
+│   ├── css/
+│   │   └── styles.css
+│   ├── js/
+│   │   ├── include.js  # Sidebar component loader
+│   │   └── main.js     # Visitor counter & guestbook API client
+│   ├── images/
+│   │   └── all image
+│   ├── fonts/
+│   │   └── all local font
+│   └── db/
+│       ├── app.py      # Flask API for visitor counter & guestbook
+│       ├── visitors.json
+│       └── guestbook.json
+└── components/
+    └── sidebar.html    # Single source of truth for sidebar
 ```
 
 ## Design System
@@ -64,8 +73,9 @@ intuch.party/
 
 - [x] Phase 1: Foundation — assets, HTML fixes, font loading
 - [x] Phase 2: 90s/Webcore Features — counter, marquee, GIFs, guestbook, glitch effects
-- [x] Phase 3: Pages — about, projects, links, music
-- [ ] Phase 4: Polish — CSS variables, mobile, JS modules
+- [x] Phase 3: JSON Data System — split visitors.json & guestbook.json *(no database)*
+- [x] Phase 4: Pages — about, projects, links, contact
+- [ ] Phase 5: Polish — CSS variables, mobile, JS modules, glitch text, music player
 
 ## License
 
@@ -74,5 +84,3 @@ MIT — see [LICENSE](LICENSE)
 ---
 
 *Made with 💜 by [@Intuch1355](https://github.com/Intuch1355)*
-
-*"I'm from the future, I'm from the past"* — Lil Uzi Vert
