@@ -3,83 +3,93 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>🪐 INTUCH.PARTY 🪐</title>
+    <title>INTUCH.PARTY</title>
+    <link rel="icon" type="image/gif" href="assets/gif/pluto.gif">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div id="site">
 
-        <h1>🪐 INTUCH.PARTY 🪐</h1>
+        <h1><img src="assets/gif/pluto.gif" class="header-gif" alt=""> INTUCH.PARTY</h1>
 
         <!-- === TABLE LAYOUT (scrollable) === -->
         <div id="layout-wrap">
             <table id="layout" border="1" cellpadding="5" cellspacing="0">
-            <tr>
+                <tr>
 
-                <!-- === SIDEBAR === -->
-                <td id="sidebar">
+                    <!-- === SIDEBAR === -->
+                    <td id="sidebar">
 
-                    <!-- === NAVIGATION === -->
-                    <h3>Navigation</h3>
+                        <!-- === NAVIGATION === -->
+                        <h3>Navigation <img src="assets/gif/arrow.gif"></h3>
 
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About Me</a></li>
-                        <li><a href="project.html">My Projects</a></li>
-                        <li><a href="links.html">My Links</a></li>
-                        <li><a href="music.html">My Music</a></li>
-                    </ul>
-
-                    <hr>
-
-                    <!-- === STATUS === -->
-                    <h3>Status</h3>
-
-                    <p>Just nothing interesting for now</p>
-                    <p>Working on this website</p>
-
-                    <hr>
-
-                    <!-- === CHANGELOG === -->
-                    <h3>Changelog</h3>
-
-                    <div id="changelog">
                         <ul>
-                            <li>11/25/26 Start working on this website</li>
-                            <li>11/26/26 Added purple space theme</li>
-                            <li>11/27/26 Updated homepage</li>
+                            <li><a href="#home" data-page="home">Home</a></li>
+                            <li><a href="#about" data-page="about">About Me</a></li>
+                            <li><a href="#projects" data-page="projects">My Projects</a></li>
+                            <li><a href="#links" data-page="links">My Links</a></li>
+                            <li><a href="#music" data-page="music">My Music</a></li>
                         </ul>
-                    </div>
 
-                    <hr>
+                        <hr>
 
-                    <!-- === SITE INFO === -->
-                    <h3>Site Info</h3>
+                        <!-- === STATUS === -->
+                        <h3>Status <img src="assets/gif/rose.gif"> </h3>
 
-                    <p>Made by Me with &#128156;</p>
+                        <p>Just nothing interesting for now</p>
+                        <p>Working on this website</p>
 
-                    <div style="text-align: center;">
-                        <img src="assets/jpeg/html.jpeg" alt="using html5">
-                        <img src="assets/jpeg/css.jpeg" alt="and css">
-                        <img src="assets/jpeg/undercon.jpeg" alt="under construction">
-                    </div>
+                        <!-- Now Playing Marquee -->
+                        <marquee behavior="scroll" direction="left" scrollamount="2"
+                            style="font-size: 11px; color: #FF8BDF; font-family: 'Geist Pixel', monospace; background: #160B2B; padding: 4px; border: 1px solid #7040A8; display: block; margin-top: 8px;">
+                            ♫ Lil Uzi Vert vs The World 2 (Deluxe) ♫ Lotus ♫ Bean (Kobe) ♫ Swerve ♫ Suicide Doors
+                            ♫ Mini Uzi ♫ Trigger ♫ Trap House ♫ No Auto ♫ Came Here For A Reason ♫ Feelings Mutual
+                            ♫ Pop ♫ Yessir ♫ Over Your Head ♫ Chrome Heart Tags ♫ Real Baby Pluto ♫ Lullaby ♫
+                            Been Here Before ♫ Got The Guap ♫ Moon Relate ♫ Price ♫ No Talk ♫ Trap This Way (This
+                            Way) ♫
+                        </marquee>
 
-                </td>
+                        <hr>
 
-                <!-- === MAIN CONTENT === -->
-                <td id="main">
-                    <h2>Welcome to my corner!</h2>
+                        <!-- === CHANGELOG === -->
+                        <h3>Changelog <img src="assets/gif/star.gif"></h3>
 
-                    <p>
-                        Hey! Welcome to INTUCH.PARTY.
-                        This is my little place on the internet.
-                    </p>
+                        <div id="changelog">
+                            <ul>
+                                <li>11/27/26 Updated homepage</li>
+                                <li>11/26/26 Added purple space theme</li>
+                                <li>11/25/26 Start working on this website</li>
+                            </ul>
+                        </div>
 
-                </td>
+                        <hr>
 
-            </tr>
-        </table>
+                        <!-- === SITE INFO === -->
+                        <h3>Site Info <img src="assets/gif/butterfly.gif"></h3>
+
+                        <p>Made by Me</p>
+
+                        <div style="text-align: center;">
+                            <img src="assets/gif/undercon.gif" alt="under construction">
+                        </div>
+
+                        <hr>
+
+                        <!-- Visitor Counter -->
+                        <p style="font-family: 'Geist Pixel', monospace; font-size: 12px; color: #FF8BDF;">
+                            <span id="count">0</span> visitors
+                        </p>
+
+                    </td>
+
+                    <!-- === MAIN CONTENT === -->
+                    <td id="main">
+                        <main id="app"></main>
+                    </td>
+
+                </tr>
+            </table>
         </div>
 
         <!-- === FOOTER === -->
@@ -92,6 +102,8 @@
         </div>
 
     </div>
+    <script type="module" src="assets/js/counter.js"></script>
+    <script type="module" src="assets/js/router.js"></script>
 </body>
 
 </html>

@@ -63,8 +63,8 @@ intuch.party/
 ## Roadmap
 
 - [x] Phase 1: Foundation — assets, HTML fixes, font loading
-- [ ] Phase 2: 90s/Webcore Features — counter, marquee, GIFs, guestbook, glitch effects
-- [ ] Phase 3: Pages — about, projects, links, music
+- [x] Phase 2: 90s/Webcore Features — counter, marquee, GIFs, guestbook, glitch effects
+- [x] Phase 3: Pages — about, projects, links, music
 - [ ] Phase 4: Polish — CSS variables, mobile, JS modules
 
 ## License

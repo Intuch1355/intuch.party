@@ -56,12 +56,25 @@ body {
     height: 80px;
     margin: 0;
     padding: 20px 5px;
-    color: #D9B8FF;
     font-family: 'Pixelify Sans', 'Pixelify Sans Local', 'Courier New', monospace;
     font-size: 32px;
     font-weight: 700;
     text-align: center;
     flex-shrink: 0;
+    line-height: 40px;
+    /* vertically center text in 80px height */
+}
+
+/* Header GIF - matches title height */
+#site>h1 .header-gif {
+    height: 1em;
+    /* matches font-size (32px) */
+    width: auto;
+    vertical-align: middle;
+    /* centers with text */
+    margin-right: 8px;
+    /* gap between GIF and text */
+    display: inline-block;
 }
 
 /* === TABLE LAYOUT (scrollable area) === */
@@ -111,7 +124,7 @@ body {
     width: 760px;
     max-width: 100%;
     height: 50px;
-    padding: 25px 5px;
+    padding: 15px 5px;
     font-size: 13px;
     color: #B99AE8;
     text-align: center;
@@ -152,6 +165,14 @@ h6 {
     color: #C99AFF;
 }
 
+/* GIFs inside sidebar h3 - match heading height */
+#sidebar h3 img {
+    height: 1em;
+    width: auto;
+    vertical-align: middle;
+    margin-left: 6px;
+}
+
 /* === LINKS === */
 
 a {
@@ -161,6 +182,13 @@ a {
 
 a:visited {
     color: #B99AE8;
+}
+
+/* Active nav link */
+#sidebar a.active {
+    color: #D9B8FF;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 /* === HORIZONTAL RULE === */
