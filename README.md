@@ -2,7 +2,7 @@
 
 > A personal homepage with **Lil Uzi Vert *Eternal Atake / Uzi vs The World 2* energy** meets **90s webcore** aesthetic.
 
-![screenshot](assets/jpeg/undercon.jpeg)
+![screenshot](assets/gif/undercon.gif)
 
 ## What Is This?
 
