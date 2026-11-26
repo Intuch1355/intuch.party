@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Guestbook - INTUCH.PARTY</title>
+    <link rel="icon" href="favicon.ico">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <div id="site">
+        <h1><img src="assets/images/pluto.gif" class="header-gif" alt=""> INTUCH.PARTY</h1>
+
+        <div id="layout-wrap">
+            <table id="layout" border="1" cellpadding="5" cellspacing="0">
+                <tr>
+                    <!-- === SIDEBAR === -->
+                    <td id="sidebar">
+                        <div id="sidebar-container"></div>
+                    </td>
+
+                    <!-- === MAIN CONTENT === -->
+                    <td id="main">
+                        <main>
+                            <section>
+                                <h2>Guestbook</h2>
+                                <p>
+                                    Leave a message in my guestbook! I love reading your messages.
+                                </p>
+
+                                <form id="guestbook-form" style="margin-bottom: 20px;">
+                                    <label for="guestbook-message" style="display: block; margin-bottom: 8px; color: #FF8BDF; font-family: 'Geist Pixel', monospace; font-size: 14px;">
+                                        Leave a message:
+                                    </label>
+                                    <textarea
+                                        id="guestbook-message"
+                                        name="message"
+                                        rows="4"
+                                        style="width: 100%; max-width: 560px; padding: 10px; background: #160B2B; border: 2px solid #7040A8; color: #E8DDF5; font-family: 'Geist Pixel', monospace; font-size: 14px; resize: vertical;"
+                                        placeholder="Say hi..."></textarea>
+                                    <br>
+                                    <button type="submit" style="margin-top: 10px; padding: 8px 20px; background: #241044; border: 2px solid #7040A8; color: #FF8BDF; font-family: 'Pixelify Sans', monospace; font-size: 14px; cursor: pointer;">
+                                        Sign Guestbook
+                                    </button>
+                                </form>
+
+                                <ul id="guestbook-list" style="list-style: none; padding: 0;">
+                                    <li style="color: #B99AE8; font-style: italic;">Loading...</li>
+                                </ul>
+                            </section>
+                        </main>
+                    </td>
+
+                </tr>
+            </table>
+        </div>
+
+        <!-- === FOOTER === -->
+        <div id="footer">
+            <span>© 2026 INTUCH.PARTY</span>
+            |
+            <a href="https://github.com/Intuch1355/intuch.party">Source Code</a>
+            |
+            <a href="LICENSE">License</a>
+        </div>
+    </div>
+    <script type="module" src="assets/js/include.js"></script>
+    <script type="module" src="assets/js/main.js"></script>
+</body>
+
+</html>

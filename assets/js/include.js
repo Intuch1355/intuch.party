@@ -23,11 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Highlight active navigation link based on current URL
       highlightActiveLink();
-
-      // Initialize visitor counter now that sidebar exists
-      if (typeof window.initVisitorCounter === 'function') {
-        window.initVisitorCounter();
-      }
     })
     .catch(err => {
       console.error('Could not load sidebar component:', err);
@@ -52,10 +47,6 @@ function highlightActiveLink() {
 
     // Check if this link points to the current page
     if (linkPath === currentPage) {
-      link.classList.add('active');
-    }
-    // Also check for hash-based navigation (e.g., #guestbook)
-    else if (linkHref.startsWith('#') && currentPage.includes('index.html') && linkHref.includes('guestbook')) {
       link.classList.add('active');
     }
   });

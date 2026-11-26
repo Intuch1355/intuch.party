@@ -4,35 +4,14 @@
 // API base URL - works for both local testing and production
 const API_BASE = '/api';
 
-// Expose initVisitorCounter globally so it can be called after sidebar loads
-window.initVisitorCounter = async function initVisitorCounter() {
-  const countEl = document.getElementById('count');
-  if (!countEl) return;
-
-  try {
-    // Register this visit
-    const visitRes = await fetch(`${API_BASE}/visit`, { method: 'POST' });
-    if (visitRes.ok) {
-      const data = await visitRes.json();
-      countEl.textContent = data.count;
-    }
-
-    // Also fetch current count (in case visit wasn't registered)
-    const countRes = await fetch(`${API_BASE}/count`);
-    if (countRes.ok) {
-      const data = await countRes.json();
-      countEl.textContent = data.count;
-    }
-  } catch (err) {
-    console.warn('Visitor counter API unavailable:', err);
-    // Fallback: show error state
-    countEl.textContent = '?';
-  }
-};
-
-// Initialize guestbook on DOM ready (guestbook is in main page, not sidebar)
+// Initialize guestbook only on pages that have the guestbook section
 document.addEventListener('DOMContentLoaded', () => {
-  initGuestbook();
+  // Only initialize guestbook if we're on index.html or guestbook.html
+  const currentPath = window.location.pathname;
+  const currentPage = currentPath.split('/').pop();
+  if (currentPage === 'index.html' || currentPage === 'guestbook.html') {
+    initGuestbook();
+  }
 });
 
 // === GUESTBOOK ===
