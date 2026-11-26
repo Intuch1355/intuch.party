@@ -3,11 +3,8 @@
 // Highlights the active navigation link based on the current page URL
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Fetch the sidebar component - try relative path first, then absolute
-  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-  const sidebarPath = isLocal ? '/components/sidebar.html' : 'components/sidebar.html';
-
-  fetch(sidebarPath)
+  // Fetch the sidebar component
+  fetch('components/sidebar.html')
     .then(response => {
       if (!response.ok) throw new Error('Failed to load sidebar');
       return response.text();
@@ -26,20 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Highlight active navigation link based on current URL
       highlightActiveLink();
+
+      // Initialize visitor counter now that sidebar exists
+      if (typeof window.initVisitorCounter === 'function') {
+        window.initVisitorCounter();
+      }
     })
     .catch(err => {
       console.error('Could not load sidebar component:', err);
-      // Fallback: create minimal sidebar if fetch fails
-      const fallback = `
-        <aside class="sidebar">
-          <h3>Navigation</h3>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Me</a></li>
-          </ul>
-        </aside>
-      `;
-      document.body.insertAdjacentHTML('afterbegin', fallback);
     });
 });
 

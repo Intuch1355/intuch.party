@@ -4,14 +4,8 @@
 // API base URL - works for both local testing and production
 const API_BASE = '/api';
 
-// Initialize on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-  initVisitorCounter();
-  initGuestbook();
-});
-
-// === VISITOR COUNTER ===
-async function initVisitorCounter() {
+// Expose initVisitorCounter globally so it can be called after sidebar loads
+window.initVisitorCounter = async function initVisitorCounter() {
   const countEl = document.getElementById('count');
   if (!countEl) return;
 
@@ -31,10 +25,15 @@ async function initVisitorCounter() {
     }
   } catch (err) {
     console.warn('Visitor counter API unavailable:', err);
-    // Fallback: show 0 or last known count
+    // Fallback: show error state
     countEl.textContent = '?';
   }
-}
+};
+
+// Initialize guestbook on DOM ready (guestbook is in main page, not sidebar)
+document.addEventListener('DOMContentLoaded', () => {
+  initGuestbook();
+});
 
 // === GUESTBOOK ===
 async function initGuestbook() {

@@ -2,9 +2,9 @@
 """Flask API for INTUCH.PARTY — visitor counter and guestbook.
 
 Endpoints:
-- GET  /api/count         -> unique visitor count
-- GET  /api/guestbook     -> list guestbook entries
-- POST /api/guestbook     -> add guestbook entry
+- GET  /api/count         -> unique visitor count (SQLite)
+- GET  /api/guestbook     -> list guestbook entries (SQLite)
+- POST /api/guestbook     -> add guestbook entry (SQLite)
 
 SQLite database stores:
 - visitors table: unique IPs
@@ -17,8 +17,8 @@ from flask import Flask, request, jsonify, abort
 
 app = Flask(__name__)
 
-# Path to SQLite database (from DB_PATH env var or default)
-DB_PATH = os.environ.get("DB_PATH", os.path.join(os.path.dirname(os.path.abspath(__file__)), "site.db"))
+# Path to SQLite database (relative to this file)
+DB_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "site.db")
 
 
 def get_db():
@@ -52,43 +52,52 @@ get_db()
 
 @app.route("/api/count", methods=["GET"])
 def get_count():
-    """Return unique visitor count."""
-    conn = get_db()
-    count = conn.execute("SELECT COUNT(*) FROM visitors").fetchone()[0]
-    return jsonify({"count": count, "type": "unique_visitors"})
+    """Return unique visitor count from SQLite."""
+    try:
+        conn = get_db()
+        count = conn.execute("SELECT COUNT(*) FROM visitors").fetchone()[0]
+        return jsonify({"count": count, "type": "unique_visitors"})
+    except Exception as e:
+        return jsonify({"error": "Database unavailable", "detail": str(e)}), 500
 
 
 @app.route("/api/visit", methods=["POST"])
 def register_visit():
-    """Register a new visitor (by IP). Called by frontend on page load."""
+    """Register a new visitor (by IP) via SQLite."""
     ip = request.remote_addr or "unknown"
-    conn = get_db()
-    conn.execute(
-        "INSERT OR IGNORE INTO visitors (ip) VALUES (?)",
-        (ip,),
-    )
-    conn.commit()
-    count = conn.execute("SELECT COUNT(*) FROM visitors").fetchone()[0]
-    return jsonify({"count": count, "registered": True})
+    try:
+        conn = get_db()
+        conn.execute(
+            "INSERT OR IGNORE INTO visitors (ip) VALUES (?)",
+            (ip,),
+        )
+        conn.commit()
+        count = conn.execute("SELECT COUNT(*) FROM visitors").fetchone()[0]
+        return jsonify({"count": count, "registered": True})
+    except Exception as e:
+        return jsonify({"error": "Database unavailable", "detail": str(e)}), 500
 
 
 @app.route("/api/guestbook", methods=["GET"])
 def get_guestbook():
-    """Return all guestbook entries, newest first (limit 50)."""
-    conn = get_db()
-    entries = conn.execute(
-        "SELECT ip, message, created_at FROM guestbook ORDER BY created_at DESC LIMIT 50"
-    ).fetchall()
-    result = [
-        {"ip": row[0], "message": row[1], "created_at": row[2]}
-        for row in entries
-    ]
-    return jsonify({"entries": result})
+    """Return all guestbook entries from SQLite, newest first (limit 50)."""
+    try:
+        conn = get_db()
+        entries = conn.execute(
+            "SELECT ip, message, created_at FROM guestbook ORDER BY created_at DESC LIMIT 50"
+        ).fetchall()
+        result = [
+            {"ip": row[0], "message": row[1], "created_at": row[2]}
+            for row in entries
+        ]
+        return jsonify({"entries": result})
+    except Exception as e:
+        return jsonify({"error": "Database unavailable", "detail": str(e)}), 500
 
 
 @app.route("/api/guestbook", methods=["POST"])
 def add_guestbook_entry():
-    """Add a new guestbook entry (anonymous)."""
+    """Add a new guestbook entry (anonymous) via SQLite."""
     data = request.get_json()
 
     if not data or not data.get("message"):
@@ -100,14 +109,16 @@ def add_guestbook_entry():
     if not message:
         abort(400, description="Message cannot be empty")
 
-    conn = get_db()
-    conn.execute(
-        "INSERT INTO guestbook (ip, message) VALUES (?, ?)",
-        (ip, message),
-    )
-    conn.commit()
-
-    return jsonify({"success": True, "message": message}), 201
+    try:
+        conn = get_db()
+        conn.execute(
+            "INSERT INTO guestbook (ip, message) VALUES (?, ?)",
+            (ip, message),
+        )
+        conn.commit()
+        return jsonify({"success": True, "message": message}), 201
+    except Exception as e:
+        return jsonify({"error": "Database unavailable", "detail": str(e)}), 500
 
 
 if __name__ == "__main__":
